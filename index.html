@@ -7,9 +7,6 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-        /* ============================
-                   全局
-                   ============================ */
         * {
             margin: 0;
             padding: 0;
@@ -23,7 +20,6 @@
             --text-secondary: rgba(255, 255, 255, 0.65);
             --text-muted: rgba(255, 255, 255, 0.3);
             --accent: #60a5fa;
-            --accent-glow: rgba(96, 165, 250, 0.2);
             --border-color: rgba(255, 255, 255, 0.06);
             --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             --radius: 16px;
@@ -42,7 +38,6 @@
             overflow-x: hidden;
         }
 
-        /* 背景光晕 */
         body::before {
             content: '';
             position: fixed;
@@ -86,9 +81,6 @@
             }
         }
 
-        /* ============================
-                   语言切换
-                   ============================ */
         .lang-bar {
             display: flex;
             justify-content: flex-end;
@@ -121,51 +113,24 @@
             font-weight: 600;
         }
 
-        /* ============================
-                   头部
-                   ============================ */
         .header {
             text-align: center;
             margin-bottom: 48px;
         }
 
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #60a5fa, #a78bfa);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 44px;
-            margin: 0 auto 18px;
-            box-shadow: 0 8px 40px rgba(96, 165, 250, 0.2);
-            user-select: none;
-            transition: transform var(--transition);
-        }
-
-        .avatar:hover {
-            transform: scale(1.04) rotate(-2deg);
-        }
-
-        .name {
-            font-size: 34px;
+        .logo-text {
+            font-size: 42px;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             background: linear-gradient(135deg, #f1f5f9, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .title-role {
-            font-size: 17px;
-            color: var(--text-secondary);
-            margin-top: 4px;
+            margin-bottom: 6px;
         }
 
         .badge-portfolio {
             display: inline-block;
-            margin-top: 14px;
+            margin-top: 8px;
             padding: 4px 18px;
             border-radius: 30px;
             font-size: 13px;
@@ -176,9 +141,6 @@
             backdrop-filter: blur(4px);
         }
 
-        /* ============================
-                   社交链接
-                   ============================ */
         .social-row {
             display: flex;
             justify-content: center;
@@ -209,9 +171,6 @@
             box-shadow: 0 8px 24px rgba(96, 165, 250, 0.25);
         }
 
-        /* ============================
-                   作品卡片
-                   ============================ */
         .projects {
             display: flex;
             flex-direction: column;
@@ -351,9 +310,6 @@
             border-color: var(--border-color);
         }
 
-        /* ============================
-                   底部
-                   ============================ */
         .footer {
             text-align: center;
             margin-top: 48px;
@@ -397,9 +353,6 @@
             margin-top: 4px;
         }
 
-        /* ============================
-                   响应式
-                   ============================ */
         @media (max-width: 640px) {
             .project-card {
                 flex-direction: column;
@@ -418,14 +371,8 @@
                 align-self: flex-end;
             }
 
-            .name {
-                font-size: 26px;
-            }
-
-            .avatar {
-                width: 80px;
-                height: 80px;
-                font-size: 34px;
+            .logo-text {
+                font-size: 30px;
             }
 
             .lang-bar {
@@ -441,29 +388,33 @@
                 font-size: 16px;
             }
         }
+
+        /* ===== 外链标签 ===== */
+        .external-link-badge {
+            font-size: 11px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-left: 8px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
 
-        <!-- ============================
-        语言切换
-        ============================ -->
+        <!-- 语言切换 -->
         <div class="lang-bar">
             <button class="lang-btn active" data-lang="zh" onclick="setLang('zh')">中文</button>
             <button class="lang-btn" data-lang="en" onclick="setLang('en')">English</button>
         </div>
 
-        <!-- ============================
-        头部
-        ============================ -->
+        <!-- 头部 -->
         <header class="header">
-            <div class="avatar">🚀</div>
-            <h1 class="name">Zack Leo</h1>
-            <p class="title-role" data-zh="独立开发者 · 全栈工程师" data-en="Independent Developer · Full Stack Engineer">
-                独立开发者 · 全栈工程师
-            </p>
+            <div class="logo-text">Zack Leo</div>
             <span class="badge-portfolio" data-zh="✦ 作品集 · 持续更新" data-en="✦ Portfolio · Always Evolving">
                 ✦ 作品集 · 持续更新
             </span>
@@ -480,17 +431,20 @@
             </div>
         </header>
 
-        <!-- ============================
-        作品列表
-        ============================ -->
+        <!-- 作品列表 -->
         <div class="projects">
 
-            <!-- 作品 1：施工日报系统（在线） -->
-            <a href="/daily-report" class="project-card" target="_blank" id="project-daily">
+            <!-- ============================================================
+            作品 1：施工日报系统 ✅ 已更新链接
+            ============================================================ -->
+            <a href="https://teamomiao.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
                 <div class="icon-box">🏗️</div>
                 <div class="info">
-                    <div class="title" data-zh="施工日报填报系统" data-en="Civil Work Daily Report">
-                        施工日报填报系统
+                    <div class="title">
+                        <span data-zh="施工日报填报系统" data-en="Civil Work Daily Report">
+                            施工日报填报系统
+                        </span>
+                        <span class="external-link-badge">🔗</span>
                     </div>
                     <div class="desc" data-zh="多用户并发录入 · 实时数据汇总 · 考勤管理 · Python + Streamlit"
                          data-en="Multi‑user entry · Real‑time summary · Attendance · Python + Streamlit">
@@ -507,7 +461,9 @@
                 <span class="arrow">→</span>
             </a>
 
-            <!-- 作品 2：数据可视化仪表板（开发中） -->
+            <!-- ============================================================
+            作品 2：数据可视化仪表板（开发中）
+            ============================================================ -->
             <div class="project-card disabled">
                 <div class="icon-box">📊</div>
                 <div class="info">
@@ -528,7 +484,9 @@
                 <span class="arrow" style="opacity:0.3;">→</span>
             </div>
 
-            <!-- 作品 3：更多作品即将上线 -->
+            <!-- ============================================================
+            作品 3：更多作品即将上线
+            ============================================================ -->
             <div class="project-card disabled">
                 <div class="icon-box">📝</div>
                 <div class="info">
@@ -545,9 +503,7 @@
 
         </div>
 
-        <!-- ============================
-        底部
-        ============================ -->
+        <!-- 底部 -->
         <footer class="footer">
             <p>
                 <span data-zh="© 2026 Zack Leo · 用" data-en="© 2026 Zack Leo · Made with">
@@ -569,9 +525,6 @@
 
     </div>
 
-    <!-- ============================
-    JavaScript
-    ============================ -->
     <script>
         let currentLang = 'zh';
 
@@ -587,13 +540,11 @@
             localStorage.setItem('preferred_lang', lang);
         }
 
-        // 恢复语言偏好
         const saved = localStorage.getItem('preferred_lang');
         if (saved === 'zh' || saved === 'en') {
             setLang(saved);
         }
 
-        // 键盘快捷键 L 切换语言
         document.addEventListener('keydown', (e) => {
             if ((e.key === 'l' || e.key === 'L') && !e.ctrlKey && !e.metaKey) {
                 setLang(currentLang === 'zh' ? 'en' : 'zh');
@@ -603,6 +554,7 @@
 
         console.log('🚀 fateglance.cn 已加载！');
         console.log('💡 按 L 键快速切换中英文');
+        console.log('📊 日报系统: https://teamomiao.streamlit.app/');
     </script>
 
 </body>
