@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zack Leo 作品集 · Portfolio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f0c29;
+            --bg-secondary: #302b63;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.3);
+            --accent: #4a90d9;
+            --accent-hover: #357abd;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --shadow-color: rgba(74, 144, 217, 0.15);
+            --radius: 20px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary), #24243e);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 960px;
+            width: 100%;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== 语言切换器 ===== */
+        .lang-switcher {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .lang-switcher button {
+            padding: 6px 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all var(--transition);
+        }
+
+        .lang-switcher button:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .lang-switcher button.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* ===== 头部 ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 52px;
+            color: white;
+            box-shadow: 0 8px 40px var(--shadow-color);
+            transition: transform var(--transition);
+            user-select: none;
+        }
+
+        .header .avatar:hover {
+            transform: scale(1.05) rotate(-4deg);
+        }
+
+        .header h1 {
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+
+        .header .badge {
+            display: inline-block;
+            padding: 4px 18px;
+            background: rgba(74, 144, 217, 0.15);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 13px;
+            margin-top: 12px;
+            border: 1px solid rgba(74, 144, 217, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* ===== 社交链接 ===== */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 18px;
+            transition: all var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px var(--shadow-color);
+        }
+
+        /* ===== 作品卡片 ===== */
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(74, 144, 217, 0.08), transparent);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(74, 144, 217, 0.25);
+            box-shadow: 0 16px 48px var(--shadow-color);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card .icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .project-card .title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .project-card .desc {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .project-card .tags {
+            display: flex;
+            gap: 6px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .project-card .tags span {
+            padding: 2px 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            font-size: 12px;
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .project-card .status {
+            display: inline-block;
+            padding: 2px 14px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+
+        .status-online {
+            background: rgba(46, 125, 50, 0.15);
+            color: #4caf50;
+            border: 1px solid rgba(46, 125, 50, 0.2);
+        }
+
+        .status-development {
+            background: rgba(255, 152, 0, 0.12);
+            color: #ff9800;
+            border: 1px solid rgba(255, 152, 0, 0.15);
+        }
+
+        .status-coming {
+            background: rgba(156, 39, 176, 0.12);
+            color: #ab47bc;
+            border: 1px solid rgba(156, 39, 176, 0.15);
+        }
+
+        .project-card .arrow {
+            position: absolute;
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 22px;
+            color: var(--text-muted);
+            transition: all var(--transition);
+            z-index: 1;
+        }
+
+        .project-card:hover .arrow {
+            color: var(--accent);
+            transform: translateY(-50%) translateX(6px);
+        }
+
+        /* ===== 底部 ===== */
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .footer .heart {
+            color: #e74c3c;
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--text-secondary);
+        }
+
+        .footer .links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 4px;
+        }
+
+        /* ===== 粒子背景 ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(74, 144, 217, 0.2);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 28px;
+            }
+            .header .subtitle {
+                font-size: 15px;
+            }
+            .header .avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 38px;
+            }
+            .project-card {
+                padding: 20px 22px;
+            }
+            .project-card .title {
+                font-size: 18px;
+            }
+            .project-card .desc {
+                font-size: 14px;
+            }
+            .project-card .icon {
+                font-size: 32px;
+            }
+            .project-card .arrow {
+                right: 18px;
+                font-size: 18px;
+            }
+            .lang-switcher {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+
+        <!-- ===== 语言切换器 ===== -->
+        <div class="lang-switcher">
+            <button class="active" data-lang="zh" onclick="setLang('zh')">中文</button>
+            <button data-lang="en" onclick="setLang('en')">English</button>
+        </div>
+
+        <!-- ===== 头部 ===== -->
+        <header class="header">
+            <div class="avatar">🚀</div>
+            <h1 id="name">Zack Leo</h1>
+            <p class="subtitle" id="subtitle">独立开发者 · 全栈工程师</p>
+            <span class="badge" id="badge">✦ 作品集 · Portfolio</span>
+
+            <div class="social-links">
+                <a href="https://github.com/leo-jan" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:leo.jan@example.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- ===== 作品列表 ===== -->
+        <div class="projects">
+
+            <!-- 作品1: 施工日报系统 -->
+            <a href="/daily-report" class="project-card" target="_blank">
+                <div class="card-content">
+                    <span class="icon">🏗️</span>
+                    <h2 class="title" data-zh="施工日报填报系统" data-en="Civil Work Daily Report">
+                        施工日报填报系统
+                    </h2>
+                    <p class="desc" data-zh="支持多用户并发录入、实时数据汇总、考勤管理 · 基于 Python + Streamlit"
+                       data-en="Multi-user concurrent entry, real-time data summary · Python + Streamlit">
+                        支持多用户并发录入、实时数据汇总、考勤管理 · 基于 Python + Streamlit
+                    </p>
+                    <div class="tags">
+                        <span>Python</span>
+                        <span>Streamlit</span>
+                        <span>Pandas</span>
+                        <span>并发安全</span>
+                    </div>
+                    <span class="status status-online" data-zh="● 在线" data-en="● Online">● 在线</span>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+
+            <!-- 作品2: 更多作品 -->
+            <div class="project-card" style="opacity:0.7; cursor:default;">
+                <div class="card-content">
+                    <span class="icon">📝</span>
+                    <h2 class="title" data-zh="更多作品即将上线" data-en="More Projects Coming Soon">
+                        更多作品即将上线
+                    </h2>
+                    <p class="desc" data-zh="持续开发中，敬请期待..." data-en="Under development, stay tuned...">
+                        持续开发中，敬请期待...
+                    </p>
+                    <span class="status status-coming" data-zh="● 规划中" data-en="● Planning">● 规划中</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===== 底部 ===== -->
+        <footer class="footer">
+            <p>
+                <span data-zh="© 2026 Zack Leo · 用" data-en="© 2026 Zack Leo · Made with">
+                    © 2026 Zack Leo · 用
+                </span>
+                <span class="heart">❤</span>
+                <span data-zh="打造" data-en="Built">打造</span>
+            </p>
+            <div class="links">
+                <a href="https://github.com/leo-jan" target="_blank">GitHub</a>
+                <span>·</span>
+                <a href="mailto:leo.jan@example.com">Email</a>
+                <span>·</span>
+                <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+                    <span data-zh="返回顶部" data-en="Back to Top">返回顶部</span>
+                </a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        let currentLang = 'zh';
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-switcher button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+                const text = el.dataset[lang];
+                if (text) el.textContent = text;
+            });
+            document.title = lang === 'zh' ? 'Zack Leo 作品集 · Portfolio' : 'Zack Leo Portfolio · 作品集';
+            localStorage.setItem('preferred_lang', lang);
+        }
+
+        (function restoreLang() {
+            const saved = localStorage.getItem('preferred_lang');
+            if (saved === 'zh' || saved === 'en') {
+                setLang(saved);
+            }
+        })();
+
+        (function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 4 + 2;
+                p.style.cssText = `
+                    width:${size}px;height:${size}px;
+                    left:${Math.random()*100}%;
+                    animation-duration:${Math.random()*25+15}s;
+                    animation-delay:${Math.random()*25}s;
+                    opacity:${Math.random()*0.4+0.1}
+                `;
+                container.appendChild(p);
+            }
+        })();
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.key === 'l' || e.key === 'L') && !e.ctrlKey && !e.metaKey) {
+                setLang(currentLang === 'zh' ? 'en' : 'zh');
+                e.preventDefault();
+            }
+        });
+
+        console.log('🚀 fateglance.cn 已加载！按 L 键切换中英文');
+    </script>
+
+</body>
+</html>
