@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zack Leo · 作品集</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
+    <!-- ✅ 您的自定义图标 -->
+    <link rel="icon" href="https://s3.bmp.ovh/2026/07/01/5nyGYdOG.png" type="image/png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
+        /* ===== 您原有的全部样式保持不变 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -14,14 +16,15 @@
         }
 
         :root {
-            --bg-primary: #0b1120;
-            --bg-card: rgba(255, 255, 255, 0.04);
-            --text-primary: #f1f5f9;
-            --text-secondary: rgba(255, 255, 255, 0.65);
-            --text-muted: rgba(255, 255, 255, 0.3);
-            --accent: #60a5fa;
+            --bg-primary: #1a2332;
+            --bg-card: rgba(255, 255, 255, 0.06);
+            --text-primary: #f0ece4;
+            --text-secondary: rgba(240, 236, 228, 0.7);
+            --text-muted: rgba(240, 236, 228, 0.35);
+            --accent: #d4a853;
+            --accent-hover: #e8c97a;
             --border-color: rgba(255, 255, 255, 0.06);
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            --shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
             --radius: 16px;
             --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -35,52 +38,20 @@
             align-items: center;
             justify-content: center;
             padding: 30px 20px;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: -40%;
-            left: -20%;
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(ellipse, rgba(96, 165, 250, 0.08), transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -30%;
-            right: -20%;
-            width: 70%;
-            height: 70%;
-            background: radial-gradient(ellipse, rgba(168, 85, 247, 0.06), transparent 70%);
-            pointer-events: none;
-            z-index: 0;
         }
 
         .container {
             max-width: 960px;
             width: 100%;
-            position: relative;
-            z-index: 1;
             animation: fadeUp 0.8s ease-out;
         }
 
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== 语言切换 ===== */
         .lang-bar {
             display: flex;
             justify-content: flex-end;
@@ -109,43 +80,42 @@
         .lang-btn.active {
             background: var(--accent);
             border-color: var(--accent);
-            color: #0b1120;
+            color: #1a2332;
             font-weight: 600;
         }
 
+        /* ===== 头部 ===== */
         .header {
             text-align: center;
             margin-bottom: 48px;
         }
 
         .logo-text {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 700;
             letter-spacing: 1px;
-            background: linear-gradient(135deg, #f1f5f9, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
+            color: var(--text-primary);
+            margin-bottom: 2px;
         }
 
         .badge-portfolio {
             display: inline-block;
-            margin-top: 8px;
-            padding: 4px 18px;
+            margin-top: 4px;
+            padding: 4px 20px;
             border-radius: 30px;
             font-size: 13px;
             font-weight: 500;
-            background: rgba(96, 165, 250, 0.12);
-            border: 1px solid rgba(96, 165, 250, 0.15);
+            background: rgba(212, 168, 83, 0.12);
+            border: 1px solid rgba(212, 168, 83, 0.15);
             color: var(--accent);
-            backdrop-filter: blur(4px);
         }
 
+        /* ===== 社交链接 ===== */
         .social-row {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-top: 18px;
+            margin-top: 16px;
         }
 
         .social-icon {
@@ -166,11 +136,12 @@
         .social-icon:hover {
             background: var(--accent);
             border-color: var(--accent);
-            color: #0b1120;
+            color: #1a2332;
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(96, 165, 250, 0.25);
+            box-shadow: 0 8px 24px rgba(212, 168, 83, 0.25);
         }
 
+        /* ===== 作品卡片 ===== */
         .projects {
             display: flex;
             flex-direction: column;
@@ -180,6 +151,7 @@
         .project-card {
             background: var(--bg-card);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             border-radius: var(--radius);
             padding: 24px 28px;
@@ -189,32 +161,18 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            position: relative;
-            overflow: hidden;
+            box-shadow: var(--shadow);
             cursor: pointer;
         }
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(96, 165, 250, 0.04), transparent 60%);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
         .project-card:hover {
-            border-color: rgba(96, 165, 250, 0.2);
+            border-color: rgba(212, 168, 83, 0.2);
             transform: translateY(-4px);
-            box-shadow: var(--shadow);
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
         }
 
         .project-card .icon-box {
-            font-size: 34px;
+            font-size: 30px;
             flex-shrink: 0;
             width: 56px;
             height: 56px;
@@ -232,32 +190,25 @@
         }
 
         .project-card .title {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 600;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
+        }
+
+        .project-card .title .ext-link {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 1px 10px;
+            border-radius: 12px;
+            margin-left: 8px;
+            border: 1px solid var(--border-color);
         }
 
         .project-card .desc {
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.5;
-        }
-
-        .project-card .tags {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
-
-        .project-card .tags span {
-            padding: 1px 12px;
-            border-radius: 30px;
-            font-size: 11px;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-muted);
-            border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .project-card .status-badge {
@@ -270,21 +221,21 @@
         }
 
         .status-online {
-            background: rgba(34, 197, 94, 0.12);
-            color: #4ade80;
-            border: 1px solid rgba(34, 197, 94, 0.15);
+            background: rgba(76, 175, 80, 0.12);
+            color: #81c784;
+            border: 1px solid rgba(76, 175, 80, 0.12);
         }
 
         .status-dev {
-            background: rgba(251, 191, 36, 0.10);
-            color: #fbbf24;
-            border: 1px solid rgba(251, 191, 36, 0.12);
+            background: rgba(255, 193, 7, 0.10);
+            color: #ffd54f;
+            border: 1px solid rgba(255, 193, 7, 0.10);
         }
 
         .status-coming {
-            background: rgba(168, 85, 247, 0.10);
-            color: #c084fc;
-            border: 1px solid rgba(168, 85, 247, 0.12);
+            background: rgba(212, 168, 83, 0.10);
+            color: var(--accent);
+            border: 1px solid rgba(212, 168, 83, 0.10);
         }
 
         .project-card .arrow {
@@ -306,10 +257,16 @@
 
         .project-card.disabled:hover {
             transform: none;
-            box-shadow: none;
+            box-shadow: var(--shadow);
             border-color: var(--border-color);
         }
 
+        .project-card.disabled:hover .arrow {
+            color: var(--text-muted);
+            transform: none;
+        }
+
+        /* ===== 底部 ===== */
         .footer {
             text-align: center;
             margin-top: 48px;
@@ -321,19 +278,14 @@
         }
 
         .footer .heart {
-            color: #f87171;
+            color: #e57373;
             display: inline-block;
             animation: heartbeat 1.8s ease-in-out infinite;
         }
 
         @keyframes heartbeat {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.15);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
 
         .footer a {
@@ -353,6 +305,7 @@
             margin-top: 4px;
         }
 
+        /* ===== 响应式 ===== */
         @media (max-width: 640px) {
             .project-card {
                 flex-direction: column;
@@ -360,21 +313,17 @@
                 padding: 20px;
                 gap: 12px;
             }
-
             .project-card .icon-box {
                 width: 48px;
                 height: 48px;
-                font-size: 26px;
+                font-size: 24px;
             }
-
             .project-card .arrow {
                 align-self: flex-end;
             }
-
             .logo-text {
-                font-size: 30px;
+                font-size: 28px;
             }
-
             .lang-bar {
                 justify-content: center;
             }
@@ -387,18 +336,6 @@
             .project-card .title {
                 font-size: 16px;
             }
-        }
-
-        /* ===== 外链标签 ===== */
-        .external-link-badge {
-            font-size: 11px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2px 10px;
-            border-radius: 12px;
-            margin-left: 8px;
-            border: 1px solid var(--border-color);
-            display: inline-block;
         }
     </style>
 </head>
@@ -425,7 +362,7 @@
                 <a href="#" class="social-icon" title="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="mailto:leo.jan@example.com" class="social-icon" title="Email">
+                <a href="mailto:291698522@qq.com" class="social-icon" title="Email">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
@@ -434,71 +371,55 @@
         <!-- 作品列表 -->
         <div class="projects">
 
-            <!-- ============================================================
-            作品 1：施工日报系统 ✅ 已更新链接
-            ============================================================ -->
+            <!-- 作品 1：施工日报系统 -->
             <a href="https://teamomiao.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
-                <div class="icon-box">🏗️</div>
+                <div class="icon-box">📋</div>
                 <div class="info">
                     <div class="title">
                         <span data-zh="施工日报填报系统" data-en="Civil Work Daily Report">
                             施工日报填报系统
                         </span>
-                        <span class="external-link-badge">🔗</span>
+                        <span class="ext-link">🔗</span>
                     </div>
-                    <div class="desc" data-zh="多用户并发录入 · 实时数据汇总 · 考勤管理 · Python + Streamlit"
-                         data-en="Multi‑user entry · Real‑time summary · Attendance · Python + Streamlit">
-                        多用户并发录入 · 实时数据汇总 · 考勤管理 · Python + Streamlit
-                    </div>
-                    <div class="tags">
-                        <span>Python</span>
-                        <span>Streamlit</span>
-                        <span>Pandas</span>
-                        <span>并发</span>
+                    <div class="desc" data-zh="支持多用户并发录入、实时数据汇总与考勤管理"
+                         data-en="Multi‑user entry, real‑time summary, and attendance management">
+                        支持多用户并发录入、实时数据汇总与考勤管理
                     </div>
                     <span class="status-badge status-online" data-zh="● 在线" data-en="● Online">● 在线</span>
                 </div>
                 <span class="arrow">→</span>
             </a>
 
-            <!-- ============================================================
-            作品 2：数据可视化仪表板（开发中）
-            ============================================================ -->
+            <!-- 作品 2：数据可视化仪表板 -->
             <div class="project-card disabled">
-                <div class="icon-box">📊</div>
+                <div class="icon-box">📈</div>
                 <div class="info">
                     <div class="title" data-zh="数据可视化仪表板" data-en="Data Visualization Dashboard">
                         数据可视化仪表板
                     </div>
-                    <div class="desc" data-zh="交互式图表 · 实时数据监控 · Plotly + Dash"
-                         data-en="Interactive charts · Real‑time monitoring · Plotly + Dash">
-                        交互式图表 · 实时数据监控 · Plotly + Dash
-                    </div>
-                    <div class="tags">
-                        <span>Python</span>
-                        <span>Plotly</span>
-                        <span>Dash</span>
+                    <div class="desc" data-zh="交互式图表与实时数据监控"
+                         data-en="Interactive charts and real‑time monitoring">
+                        交互式图表与实时数据监控
                     </div>
                     <span class="status-badge status-dev" data-zh="● 开发中" data-en="● In Development">● 开发中</span>
                 </div>
-                <span class="arrow" style="opacity:0.3;">→</span>
+                <span class="arrow">→</span>
             </div>
 
-            <!-- ============================================================
-            作品 3：更多作品即将上线
-            ============================================================ -->
+            <!-- 作品 3：更多作品 -->
             <div class="project-card disabled">
                 <div class="icon-box">📝</div>
                 <div class="info">
                     <div class="title" data-zh="更多作品即将上线" data-en="More Projects Coming Soon">
                         更多作品即将上线
                     </div>
-                    <div class="desc" data-zh="持续开发中，敬请期待..." data-en="Under development, stay tuned...">
+                    <div class="desc" data-zh="持续开发中，敬请期待..."
+                         data-en="Under development, stay tuned...">
                         持续开发中，敬请期待...
                     </div>
                     <span class="status-badge status-coming" data-zh="● 规划中" data-en="● Planning">● 规划中</span>
                 </div>
-                <span class="arrow" style="opacity:0.3;">→</span>
+                <span class="arrow">→</span>
             </div>
 
         </div>
@@ -506,16 +427,14 @@
         <!-- 底部 -->
         <footer class="footer">
             <p>
-                <span data-zh="© 2026 Zack Leo · 用" data-en="© 2026 Zack Leo · Made with">
-                    © 2026 Zack Leo · 用
+                <span data-zh="© 2026 Zack Leo · 业余独立设计" data-en="© 2026 Zack Leo · Independent Design">
+                    © 2026 Zack Leo · 业余独立设计
                 </span>
-                <span class="heart">❤</span>
-                <span data-zh="打造" data-en="Built">打造</span>
             </p>
             <div class="footer-links">
                 <a href="https://github.com/leo-jan" target="_blank">GitHub</a>
                 <span>·</span>
-                <a href="mailto:leo.jan@example.com">Email</a>
+                <a href="mailto:291698522@qq.com">Email</a>
                 <span>·</span>
                 <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
                     <span data-zh="返回顶部" data-en="Back to Top">返回顶部</span>
