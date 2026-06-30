@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fateful Glance</title>
     <link rel="icon" href="https://s3.bmp.ovh/2026/07/01/5nyGYdOG.png" type="image/png" />
+    <!-- Font Awesome 6 (免费图标库) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
+        /* ===== 全局重置 & 变量 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -14,297 +16,370 @@
         }
 
         :root {
-            --bg-primary: #0f1a2e;
-            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-primary: #0a1424;
+            --bg-card: rgba(255, 255, 255, 0.04);
             --text-primary: #eef3fc;
-            --text-secondary: rgba(180, 210, 240, 0.8);
-            --text-muted: rgba(180, 210, 240, 0.4);
-            --accent: #5b8def;
-            --accent-light: #8ab4ff;
-            --accent-glow: rgba(91, 141, 239, 0.2);
-            --border-color: rgba(91, 141, 239, 0.15);
-            --shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
-            --radius: 16px;
-            --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            --text-secondary: rgba(200, 215, 240, 0.8);
+            --text-muted: rgba(180, 200, 230, 0.35);
+            --accent: #6b9aff;
+            --accent-glow: rgba(107, 154, 255, 0.15);
+            --border-color: rgba(107, 154, 255, 0.12);
+            --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.5);
+            --radius: 18px;
+            --transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-family: var(--font-sans);
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px 20px;
+            padding: 2rem 1.5rem;
+            margin: 0;
+            /* 精致背景光晕 */
+            background-image: 
+                radial-gradient(ellipse at 20% 30%, rgba(107, 154, 255, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 70%, rgba(107, 154, 255, 0.05) 0%, transparent 50%);
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: -30%;
-            left: -20%;
-            width: 70%;
-            height: 70%;
-            background: radial-gradient(ellipse, rgba(91, 141, 239, 0.10), transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -30%;
-            right: -20%;
-            width: 70%;
-            height: 70%;
-            background: radial-gradient(ellipse, rgba(91, 141, 239, 0.06), transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
+        /* ===== 主容器 ===== */
         .container {
-            max-width: 960px;
+            max-width: 720px;
             width: 100%;
-            position: relative;
-            z-index: 1;
-            animation: fadeUp 0.8s ease-out;
+            animation: fadeUp 0.7s ease-out;
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== 语言切换栏 ===== */
         .lang-bar {
             display: flex;
             justify-content: flex-end;
-            gap: 6px;
-            margin-bottom: 32px;
+            gap: 8px;
+            margin-bottom: 2.5rem;
         }
 
         .lang-btn {
-            padding: 5px 16px;
-            border: 1.5px solid var(--border-color);
-            border-radius: 30px;
+            padding: 4px 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 40px;
             background: transparent;
             color: var(--text-muted);
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 450;
+            letter-spacing: 0.3px;
             cursor: pointer;
             transition: var(--transition);
             font-family: inherit;
+            backdrop-filter: blur(4px);
         }
 
         .lang-btn:hover {
-            border-color: var(--accent);
-            color: var(--text-primary);
+            border-color: rgba(107, 154, 255, 0.3);
+            color: var(--text-secondary);
         }
 
         .lang-btn.active {
             background: var(--accent);
             border-color: var(--accent);
-            color: #0f1a2e;
-            font-weight: 600;
+            color: #0a1424;
+            font-weight: 500;
+            box-shadow: 0 0 20px rgba(107, 154, 255, 0.15);
         }
 
+        /* ===== 头部 ===== */
         .header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 3.2rem;
         }
 
         .logo-text {
-            font-size: 40px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 2.8rem;
+            font-weight: 550;
+            letter-spacing: -0.5px;
             color: var(--text-primary);
-            margin-bottom: 2px;
+            line-height: 1.2;
         }
 
         .logo-sub {
-            font-size: 12px;
+            font-size: 0.7rem;
             color: var(--text-muted);
-            letter-spacing: 3px;
+            letter-spacing: 5px;
             font-weight: 300;
-            margin-top: -2px;
-            opacity: 0.5;
+            margin-top: 4px;
+            opacity: 0.6;
         }
 
+        /* ===== 项目卡片列表 ===== */
         .projects {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 16px;
         }
 
         .project-card {
             background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
             border-radius: var(--radius);
-            padding: 24px 28px;
+            padding: 1.2rem 1.8rem;
             transition: var(--transition);
             text-decoration: none;
             color: var(--text-primary);
             display: flex;
             align-items: center;
-            gap: 20px;
-            box-shadow: var(--shadow);
+            gap: 1.2rem;
+            box-shadow: var(--shadow-card);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 卡片悬浮光效 */
+        .project-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle at 0% 0%, rgba(107, 154, 255, 0.02), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
         }
 
         .project-card:hover {
-            border-color: rgba(91, 141, 239, 0.25);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(91, 141, 239, 0.06);
+            border-color: rgba(107, 154, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(107, 154, 255, 0.03);
         }
 
+        /* 图标盒子 — 更精致 */
         .project-card .icon-box {
-            font-size: 30px;
+            font-size: 1.6rem;
             flex-shrink: 0;
-            width: 56px;
-            height: 56px;
+            width: 52px;
+            height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(91, 141, 239, 0.08);
-            border-radius: 12px;
-            border: 1px solid rgba(91, 141, 239, 0.10);
+            background: rgba(107, 154, 255, 0.06);
+            border-radius: 14px;
+            border: 1px solid rgba(107, 154, 255, 0.06);
+            color: var(--accent);
+            transition: var(--transition);
         }
 
+        .project-card:hover .icon-box {
+            background: rgba(107, 154, 255, 0.1);
+            border-color: rgba(107, 154, 255, 0.15);
+        }
+
+        /* 信息区域 */
         .project-card .info {
             flex: 1;
             min-width: 0;
         }
 
         .project-card .title {
-            font-size: 19px;
-            font-weight: 600;
-            margin-bottom: 4px;
+            font-size: 1.15rem;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
         .project-card .title .ext-link {
-            font-size: 12px;
+            font-size: 0.7rem;
             color: var(--text-muted);
-            background: rgba(91, 141, 239, 0.08);
-            padding: 1px 10px;
-            border-radius: 12px;
-            margin-left: 8px;
-            border: 1px solid rgba(91, 141, 239, 0.08);
-        }
-
-        .project-card .desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        .project-card .status-badge {
-            display: inline-block;
-            padding: 2px 12px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 500;
-            margin-top: 6px;
-        }
-
-        .status-online {
-            background: rgba(74, 200, 140, 0.12);
-            color: #64d4a0;
-            border: 1px solid rgba(74, 200, 140, 0.10);
-        }
-
-        .status-dev {
-            background: rgba(255, 200, 80, 0.08);
-            color: #e8c86a;
-            border: 1px solid rgba(255, 200, 80, 0.08);
-        }
-
-        .status-coming {
-            background: rgba(91, 141, 239, 0.08);
-            color: var(--accent-light);
-            border: 1px solid rgba(91, 141, 239, 0.08);
-        }
-
-        .project-card .arrow {
-            font-size: 18px;
-            color: var(--text-muted);
-            flex-shrink: 0;
+            background: rgba(107, 154, 255, 0.05);
+            padding: 0 10px;
+            border-radius: 40px;
+            border: 1px solid rgba(107, 154, 255, 0.05);
             transition: var(--transition);
         }
 
-        .project-card:hover .arrow {
-            color: var(--accent-light);
-            transform: translateX(4px);
+        .project-card:hover .title .ext-link {
+            color: var(--text-secondary);
+            border-color: rgba(107, 154, 255, 0.1);
         }
 
+        .project-card .desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            opacity: 0.85;
+            font-weight: 350;
+        }
+
+        /* 状态徽章 — 极简圆点+文字 */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 12px 2px 8px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 430;
+            margin-top: 4px;
+            letter-spacing: 0.2px;
+            border: 1px solid transparent;
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .status-online {
+            background: rgba(74, 200, 140, 0.08);
+            color: #7ae0b0;
+            border-color: rgba(74, 200, 140, 0.08);
+        }
+        .status-online::before {
+            background: #5cdba5;
+            box-shadow: 0 0 8px rgba(74, 200, 140, 0.3);
+        }
+
+        .status-dev {
+            background: rgba(255, 200, 80, 0.05);
+            color: #e0c86a;
+            border-color: rgba(255, 200, 80, 0.05);
+        }
+        .status-dev::before {
+            background: #e0c86a;
+            box-shadow: 0 0 8px rgba(255, 200, 80, 0.15);
+        }
+
+        .status-coming {
+            background: rgba(107, 154, 255, 0.05);
+            color: #8ab4ff;
+            border-color: rgba(107, 154, 255, 0.05);
+        }
+        .status-coming::before {
+            background: #8ab4ff;
+            box-shadow: 0 0 8px rgba(107, 154, 255, 0.15);
+        }
+
+        /* 右箭头 */
+        .project-card .arrow {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: var(--transition);
+            opacity: 0.6;
+        }
+
+        .project-card:hover .arrow {
+            color: var(--accent);
+            transform: translateX(3px);
+            opacity: 1;
+        }
+
+        /* 禁用卡片 (规划中/开发中) */
         .project-card.disabled {
-            opacity: 0.5;
+            opacity: 0.6;
             cursor: default;
         }
 
         .project-card.disabled:hover {
             transform: none;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-card);
             border-color: var(--border-color);
         }
 
         .project-card.disabled:hover .arrow {
             color: var(--text-muted);
             transform: none;
+            opacity: 0.6;
         }
 
+        .project-card.disabled .icon-box {
+            opacity: 0.7;
+        }
+
+        /* ===== 底部 ===== */
         .footer {
             text-align: center;
-            margin-top: 48px;
+            margin-top: 3.5rem;
             color: var(--text-muted);
-            font-size: 13px;
+            font-size: 0.8rem;
             border-top: 1px solid var(--border-color);
-            padding-top: 28px;
+            padding-top: 2rem;
+            letter-spacing: 0.3px;
         }
 
         .footer .heart {
-            color: #5b8def;
+            color: #6b9aff;
             display: inline-block;
-            animation: heartbeat 1.8s ease-in-out infinite;
+            animation: heartbeat 2s ease-in-out infinite;
+            margin: 0 2px;
         }
 
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            50% { transform: scale(1.12); }
         }
 
-        /* 底部链接已全部删除 */
-
+        /* ===== 响应式 ===== */
         @media (max-width: 640px) {
+            .container {
+                padding: 0 0.2rem;
+            }
             .project-card {
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 20px;
-                gap: 12px;
+                padding: 1.2rem;
+                gap: 0.8rem;
             }
             .project-card .icon-box {
-                width: 48px;
-                height: 48px;
-                font-size: 24px;
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
             }
             .project-card .arrow {
                 align-self: flex-end;
+                margin-top: 0.2rem;
             }
             .logo-text {
-                font-size: 28px;
+                font-size: 2.2rem;
             }
             .lang-bar {
                 justify-content: center;
+                margin-bottom: 2rem;
+            }
+            .project-card .title {
+                font-size: 1rem;
             }
         }
 
         @media (max-width: 400px) {
             .project-card {
-                padding: 16px;
+                padding: 1rem;
             }
             .project-card .title {
-                font-size: 16px;
+                font-size: 0.95rem;
+            }
+            .project-card .desc {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -313,53 +388,57 @@
 
     <div class="container">
 
+        <!-- 语言切换 -->
         <div class="lang-bar">
             <button class="lang-btn active" data-lang="zh" onclick="setLang('zh')">中文</button>
             <button class="lang-btn" data-lang="en" onclick="setLang('en')">English</button>
         </div>
 
+        <!-- 头部 -->
         <header class="header">
             <div class="logo-text">Fateful Glance</div>
             <div class="logo-sub">✦ fateglance.cn ✦</div>
         </header>
 
+        <!-- 项目列表 -->
         <div class="projects">
 
+            <!-- 卡片 1：可访问链接 -->
             <a href="https://teamomiao.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
-                <div class="icon-box">📋</div>
+                <div class="icon-box"><i class="fa-regular fa-clipboard"></i></div>
                 <div class="info">
                     <div class="title">
-                        <span data-zh="施工日报填报系统" data-en="Civil Work Daily Report">
-                            施工日报填报系统
-                        </span>
-                        <span class="ext-link">🔗</span>
+                        <span data-zh="施工日报填报系统" data-en="Civil Work Daily Report">施工日报填报系统</span>
+                        <span class="ext-link"><i class="fa-regular fa-arrow-up-right-from-square"></i></span>
                     </div>
                     <div class="desc" data-zh="支持多用户并发录入、实时数据汇总与考勤管理"
-                         data-en="Multi‑user entry, real‑time summary, and attendance management">
+                         data-en="Multi‑user entry, real‑time summary & attendance">
                         支持多用户并发录入、实时数据汇总与考勤管理
                     </div>
-                    <span class="status-badge status-online" data-zh="● 在线" data-en="● Online">● 在线</span>
+                    <span class="status-badge status-online" data-zh="在线" data-en="Online">在线</span>
                 </div>
-                <span class="arrow">→</span>
+                <span class="arrow"><i class="fa-regular fa-chevron-right"></i></span>
             </a>
 
+            <!-- 卡片 2：开发中 -->
             <div class="project-card disabled">
-                <div class="icon-box">📈</div>
+                <div class="icon-box"><i class="fa-regular fa-chart-line"></i></div>
                 <div class="info">
                     <div class="title" data-zh="数据可视化仪表板" data-en="Data Visualization Dashboard">
                         数据可视化仪表板
                     </div>
                     <div class="desc" data-zh="交互式图表与实时数据监控"
-                         data-en="Interactive charts and real‑time monitoring">
+                         data-en="Interactive charts & real‑time monitoring">
                         交互式图表与实时数据监控
                     </div>
-                    <span class="status-badge status-dev" data-zh="● 开发中" data-en="● In Development">● 开发中</span>
+                    <span class="status-badge status-dev" data-zh="开发中" data-en="In Dev">开发中</span>
                 </div>
-                <span class="arrow">→</span>
+                <span class="arrow"><i class="fa-regular fa-chevron-right"></i></span>
             </div>
 
+            <!-- 卡片 3：规划中 -->
             <div class="project-card disabled">
-                <div class="icon-box">📝</div>
+                <div class="icon-box"><i class="fa-regular fa-pen-to-square"></i></div>
                 <div class="info">
                     <div class="title" data-zh="更多作品即将上线" data-en="More Projects Coming Soon">
                         更多作品即将上线
@@ -368,17 +447,18 @@
                          data-en="Under development, stay tuned...">
                         持续开发中，敬请期待...
                     </div>
-                    <span class="status-badge status-coming" data-zh="● 规划中" data-en="● Planning">● 规划中</span>
+                    <span class="status-badge status-coming" data-zh="规划中" data-en="Planning">规划中</span>
                 </div>
-                <span class="arrow">→</span>
+                <span class="arrow"><i class="fa-regular fa-chevron-right"></i></span>
             </div>
 
         </div>
 
+        <!-- 底部 -->
         <footer class="footer">
             <p>
                 <span data-zh="© 2026 Zack Leo ❤️ Kepler Miao" data-en="© 2026 Zack Leo ❤️ Kepler Miao">
-                    © 2026 Zack Leo ❤️ Kepler Miao
+                    © 2026 Zack Leo <span class="heart">❤️</span> Kepler Miao
                 </span>
             </p>
         </footer>
@@ -386,32 +466,38 @@
     </div>
 
     <script>
+        // ===== 语言切换逻辑 =====
         let currentLang = 'zh';
 
         function setLang(lang) {
             currentLang = lang;
+            // 更新按钮状态
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
+            // 更新所有带 data-zh / data-en 的元素
             document.querySelectorAll('[data-zh][data-en]').forEach(el => {
                 el.textContent = el.dataset[lang];
             });
             localStorage.setItem('preferred_lang', lang);
         }
 
+        // 读取本地存储偏好
         const saved = localStorage.getItem('preferred_lang');
         if (saved === 'zh' || saved === 'en') {
             setLang(saved);
         }
 
+        // 键盘快捷键: L 键切换语言
         document.addEventListener('keydown', (e) => {
-            if ((e.key === 'l' || e.key === 'L') && !e.ctrlKey && !e.metaKey) {
+            if ((e.key === 'l' || e.key === 'L') && !e.ctrlKey && !e.metaKey && !e.altKey) {
                 setLang(currentLang === 'zh' ? 'en' : 'zh');
                 e.preventDefault();
             }
         });
 
-        console.log('🚀 fateglance.cn 已加载！');
+        // 小彩蛋控制台提示
+        console.log('🚀 fateglance.cn 已加载 · 简洁高级');
         console.log('💡 按 L 键快速切换中英文');
         console.log('📊 日报系统: https://teamomiao.streamlit.app/');
     </script>
