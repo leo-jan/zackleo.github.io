@@ -226,6 +226,12 @@
             border: 1px solid rgba(91, 141, 239, 0.08);
         }
 
+        .status-new {
+            background: rgba(91, 141, 239, 0.15);
+            color: #8ab4ff;
+            border: 1px solid rgba(91, 141, 239, 0.15);
+        }
+
         .project-card .arrow {
             font-size: 18px;
             color: var(--text-muted);
@@ -254,6 +260,12 @@
             transform: none;
         }
 
+        .entry-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .footer {
             text-align: center;
             margin-top: 48px;
@@ -273,8 +285,6 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.15); }
         }
-
-        /* 底部链接已全部删除 */
 
         @media (max-width: 640px) {
             .project-card {
@@ -325,24 +335,54 @@
 
         <div class="projects">
 
-            <a href="https://teamomiao.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
-                <div class="icon-box">📋</div>
-                <div class="info">
-                    <div class="title">
-                        <span data-zh="施工日报填报系统" data-en="Civil Work Daily Report">
-                            施工日报填报系统
-                        </span>
-                        <span class="ext-link">🔗</span>
-                    </div>
-                    <div class="desc" data-zh="支持多用户并发录入、实时数据汇总与考勤管理"
-                         data-en="Multi‑user entry, real‑time summary, and attendance management">
-                        支持多用户并发录入、实时数据汇总与考勤管理
-                    </div>
-                    <span class="status-badge status-online" data-zh="● 在线" data-en="● Online">● 在线</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
+            <!-- ============================================================
+            施工日报系统 - 双入口
+            ============================================================ -->
+            <div class="entry-group">
 
+                <!-- 入口1 -->
+                <a href="https://teamomiao.streamlit.app/" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-box">📋</div>
+                    <div class="info">
+                        <div class="title">
+                            <span data-zh="施工日报填报系统" data-en="Daily Report">
+                                施工日报填报系统
+                            </span>
+                            <span class="ext-link">🔗</span>
+                        </div>
+                        <div class="desc" data-zh="支持多用户并发录入、实时数据汇总与考勤管理"
+                             data-en="Multi‑user entry, real‑time summary, and attendance management">
+                            支持多用户并发录入、实时数据汇总与考勤管理
+                        </div>
+                        <span class="status-badge status-online" data-zh="● 在线" data-en="● Online">● 在线</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+
+                <!-- 入口2：重构版 -->
+                <a href="https://daily-report-three-black.vercel.app/" class="project-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-box">🚀</div>
+                    <div class="info">
+                        <div class="title">
+                            <span data-zh="施工日报填报系统（重构版）" data-en="Daily Report (Refactored)">
+                                施工日报填报系统（重构版）
+                            </span>
+                            <span class="ext-link">🔗</span>
+                        </div>
+                        <div class="desc" data-zh="重构版 · 性能优化，加载更快"
+                             data-en="Refactored · Optimized for faster loading">
+                            重构版 · 性能优化，加载更快
+                        </div>
+                        <span class="status-badge status-new" data-zh="● 新版" data-en="● New">● 新版</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+
+            </div>
+
+            <!-- ============================================================
+            数据可视化仪表板（开发中）
+            ============================================================ -->
             <div class="project-card disabled">
                 <div class="icon-box">📈</div>
                 <div class="info">
@@ -358,6 +398,9 @@
                 <span class="arrow">→</span>
             </div>
 
+            <!-- ============================================================
+            更多作品
+            ============================================================ -->
             <div class="project-card disabled">
                 <div class="icon-box">📝</div>
                 <div class="info">
@@ -375,6 +418,7 @@
 
         </div>
 
+        <!-- 底部 -->
         <footer class="footer">
             <p>
                 <span data-zh="© 2026 Zack Leo ❤️ Kepler Miao" data-en="© 2026 Zack Leo ❤️ Kepler Miao">
@@ -413,7 +457,6 @@
 
         console.log('🚀 fateglance.cn 已加载！');
         console.log('💡 按 L 键快速切换中英文');
-        console.log('📊 日报系统: https://teamomiao.streamlit.app/');
     </script>
 
 </body>
